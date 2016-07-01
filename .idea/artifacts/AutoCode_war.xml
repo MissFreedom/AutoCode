@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="AutoCode:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <root id="archive" name="autocode.war">
+      <element id="artifact" artifact-name="AutoCode:war exploded" />
+    </root>
+  </artifact>
+</component>
