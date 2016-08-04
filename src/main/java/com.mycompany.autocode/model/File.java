@@ -6,6 +6,26 @@ package com.mycompany.autocode.model;
 public class File {
 
     /**
+     * ID
+     */
+    private String id;
+
+    /**
+     * groupId
+     */
+    private String groupId;
+
+    /**
+     * artifactId
+     */
+    private String artifactId;
+
+    /**
+     * jdbc.properties
+     */
+    private String jdbc;
+
+    /**
      * web.xml内容
      */
     private String web;
@@ -18,7 +38,39 @@ public class File {
     /**
      * web首页内容
      */
-    private String index;
+    private String page;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getGroupId() {
+        return groupId;
+    }
+
+    public void setGroupId(String groupId) {
+        this.groupId = groupId;
+    }
+
+    public String getArtifactId() {
+        return artifactId;
+    }
+
+    public void setArtifactId(String artifactId) {
+        this.artifactId = artifactId;
+    }
+
+    public String getJdbc() {
+        return jdbc;
+    }
+
+    public void setJdbc(String jdbc) {
+        this.jdbc = jdbc;
+    }
 
     public String getWeb() {
         return web;
@@ -28,12 +80,12 @@ public class File {
         this.web = web;
     }
 
-    public String getIndex() {
-        return index;
+    public String getPage() {
+        return page;
     }
 
-    public void setIndex(String index) {
-        this.index = index;
+    public void setPage(String page) {
+        this.page = page;
     }
 
     public String getPom() {

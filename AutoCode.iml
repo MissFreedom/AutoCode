@@ -11,6 +11,17 @@
         </webroots>
       </configuration>
     </facet>
+    <facet type="Spring" name="Spring">
+      <configuration>
+        <fileset id="fileset" name="Spring Application Context" removed="false">
+          <file>file://$MODULE_DIR$/src/main/resources/spring-component.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/open-ds.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-beans.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-tx.xml</file>
+          <file>file://$MODULE_DIR$/src/main/resources/spring-component.xml</file>
+        </fileset>
+      </configuration>
+    </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_5" inherit-compiler-output="false">
     <output url="file://$MODULE_DIR$/target/classes" />
