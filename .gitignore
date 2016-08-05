@@ -5,8 +5,6 @@
 *.war
 *.ear
 hs_err_pid*
-.idea/workspace.xml
-src/main/java/com.mycompany.autocode/controller/
-src/main/java/com.mycompany.autocode/dao/
-src/main/java/com.mycompany.autocode/service/
-target/
+.idea
+*.iml
+target

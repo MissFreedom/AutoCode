@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.DataBaseDao">
+    <insert id="insertDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO">
+        insert into dataBase(
+            id,
+            userId,
+            driver,
+            url,
+            userName,
+            password,
+            initialSize,
+            maxActive,
+            maxIdle,
+            minIdle,
+            maxWait,
+            createDate,
+            modifyDate,
+            isdeleted
+        )values(
+            #{id},
+            #{userId},
+            #{driver},
+            #{url},
+            #{userName},
+            #{password},
+            #{initialSize},
+            #{maxActive},
+            #{maxIdle},
+            #{minIdle},
+            #{maxWait},
+            #{createDate},
+            #{modifyDate},
+            #{isdeleted}
+        )
+    </insert>
+
+    <update id="updateDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO">
+        update dataBase
+        <set>
+            <if test = "driver != null and driver != ''">
+                driver = #{driver},
+            </if>
+            <if test = "url != null and url !=''">
+                url = #{url},
+            </if>
+            <if test = "userName != null and userName != ''">
+                userName = #{userName},
+            </if>
+            <if test = "passWord != null and passWord != ''">
+                passWord = #{passWord},
+            </if>
+            <if test = "initialSize != null and passWord != '' ">
+                initialSize = #{initialSize},
+            </if>
+            <if test = "maxActive != null and maxActive != ''">
+                maxActive = #{maxActive},
+            </if>
+            <if test = "maxIdle != null and maxIdle != ''">
+                maxIdle = #{maxIdle},
+            </if>
+            <if test = "minIdle != null and minIdle != ''">
+                minIdle = #{minIdle},
+            </if>
+            <if test = "maxWait != null and maxWait != ''">
+                maxWait = #{maxWait},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            id = #{id} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deleteDataBase" parameterType="String">
+        update dataBase set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+    </update>
+
+    <select id="selectDataBaseById" parameterType="String">
+        select * from dataBase where id = #{id} and isdeleted = 0
+    </select>
+
+    <select id="selectDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO" resultType="com.mycompany.autocode.model.DataBaseDO">
+        select * from dataBase
+        <where>
+            isdeleted = 0
+            <if test="userId != null and userId !=''">
+            and userId = #{userId}
+            </if>
+            <if test="driver != null and driver != ''">
+            and driver like concat('% ',#{driver},'%')
+            </if>
+            <if test="url != null and url != ''">
+            and url like concat('%',#{url},'%')
+            </if>
+            <if test="userName != null and userName = ''">
+            and userName like concat('%',#{userName},'%')
+            </if>
+            <if test="initialSize != null and initialSize != ''">
+            and initialSize = #{initialSize}
+            </if>
+            <if test="maxActive != null and maxActive != ''">
+            and maxActive = #{maxActive}
+            </if>
+            <if test="maxIdle != null and maxIdle != ''">
+            and maxIdle = #{maxIdle}
+            </if>
+            <if test="minIdle != null and minIdle != ''">
+            and minIdle = #{minIdle}
+            </if>
+            <if test="maxWait != null and maxWait != ''">
+            and maxWait = #{maxWait}
+            </if>
+        </where>
+    </select>
+</mapper>
