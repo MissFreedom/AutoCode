@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.mycompany.autocode.dao.DataBaseDao">
     <insert id="insertDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO">
-        insert into dataBase(
+        insert into database(
             id,
             userId,
             driver,
@@ -29,14 +29,14 @@
             #{maxIdle},
             #{minIdle},
             #{maxWait},
-            #{createDate},
-            #{modifyDate},
-            #{isdeleted}
+            sysdate(),
+            sysdate(),
+            0
         )
     </insert>
 
     <update id="updateDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO">
-        update dataBase
+        update database
         <set>
             <if test = "driver != null and driver != ''">
                 driver = #{driver},
@@ -73,15 +73,15 @@
     </update>
 
     <update id="deleteDataBase" parameterType="String">
-        update dataBase set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+        update database set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
     </update>
 
     <select id="selectDataBaseById" parameterType="String">
-        select * from dataBase where id = #{id} and isdeleted = 0
+        select * from database where id = #{id} and isdeleted = 0
     </select>
 
     <select id="selectDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO" resultType="com.mycompany.autocode.model.DataBaseDO">
-        select * from dataBase
+        select * from database
         <where>
             isdeleted = 0
             <if test="userId != null and userId !=''">

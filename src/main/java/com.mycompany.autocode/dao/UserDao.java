@@ -24,7 +24,7 @@ public interface UserDao {
     /**
      * 修改用户
      */
-    int updateUser(UserDO webDo);
+    int updateUser(UserDO userDo);
 
     /**
      * 通过用户Id查询用户信息
@@ -34,5 +34,5 @@ public interface UserDao {
     /**
      * 查询用户信息
      */
-    List<UserDO> selectUser(UserDO userDo);
+    UserDO selectUserByUserName(String userName);
 }

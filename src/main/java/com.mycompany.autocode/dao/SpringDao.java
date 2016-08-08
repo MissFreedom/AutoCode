@@ -31,7 +31,7 @@ public interface SpringDao {
     SpringDO selectpringById(String id);
 
     /**
-     * 通过用户Id获取用户所有spring文件
+     * 通过条件获取spring文件
      */
-    List<SpringDO> selectSpringByUserId(String userId);
+    List<SpringDO> selectSpring(SpringDO query);
 }

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.WebDao">
+    <insert id="insertWeb" parameterType="com.mycompany.autocode.model.WebDO">
+        insert into web(
+        id,
+        userId,
+        webNane,
+        webContext,
+        createDate,
+        modifyDate,
+        isdeleted
+        )values(
+        #{id},
+        #{userId},
+        #{webNane},
+        #{webContext},
+        sysdate(),
+        sysdate(),
+        0
+        )
+    </insert>
+
+    <update id="updateWeb" parameterType="com.mycompany.autocode.model.WebDO">
+        update web
+        <set>
+            <if test = "webNane != null and webNane != ''">
+                webNane = #{webName},
+            </if>
+            <if test = "webContext != null and webContext !=''">
+                webContext = #{webContext},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            id = #{id} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deleteWeb" parameterType="String">
+        update web set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+    </update>
+
+    <select id="selectWebById" parameterType="String">
+        select * from web where id = #{id} and isdeleted = 0
+    </select>
+
+    <select id="selectWeb" parameterType="com.mycompany.autocode.model.WebDO" resultType="com.mycompany.autocode.model.WebDO">
+        select * from web
+        <where>
+            isdeleted = 0
+            <if test="userId != null and userId !=''">
+                and userId = #{userId}
+            </if>
+            <if test="webName != null and webName != ''">
+                and webName like concat('% ',#{webName},'%')
+            </if>
+            <if test="webContext != null and webContext != ''">
+                and webContext like concat('%',#{webContext},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

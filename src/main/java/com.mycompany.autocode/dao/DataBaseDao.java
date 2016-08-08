@@ -32,7 +32,7 @@ public interface DataBaseDao {
     DataBaseDO selectDataBaseById(String id);
 
     /**
-     * 查询用户信息
+     * 通过条件查询数据库配置
      */
     List<DataBaseDO> selectDataBase(DataBaseDO dataBaseDo);
 }

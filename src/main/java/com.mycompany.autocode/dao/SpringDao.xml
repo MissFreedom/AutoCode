@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.SpringDao">
+    <insert id="insertSpring" parameterType="com.mycompany.autocode.model.SpringDO">
+        insert into spring(
+        id,
+        userId,
+        springNane,
+        springContext,
+        createDate,
+        modifyDate,
+        isdeleted
+        )values(
+        #{id},
+        #{userId},
+        #{springNane},
+        #{springContext},
+        sysdate(),
+        sysdate(),
+        0
+        )
+    </insert>
+
+    <update id="updateSpring" parameterType="com.mycompany.autocode.model.SpringDO">
+        update spring
+        <set>
+            <if test = "springNane != null and springNane != ''">
+                springNane = #{springName},
+            </if>
+            <if test = "springContext != null and springContext !=''">
+                springContext = #{springContext},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            id = #{id} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deleteSpring" parameterType="String">
+        update spring set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+    </update>
+
+    <select id="selectSpringById" parameterType="String">
+        select * from spring where id = #{id} and isdeleted = 0
+    </select>
+
+    <select id="selectSpring" parameterType="com.mycompany.autocode.model.SpringDO" resultType="com.mycompany.autocode.model.SpringDO">
+        select * from spring
+        <where>
+            isdeleted = 0
+            <if test="userId != null and userId !=''">
+                and userId = #{userId}
+            </if>
+            <if test="springName != null and springName != ''">
+                and springName like concat('% ',#{springName},'%')
+            </if>
+            <if test="springContext != null and springContext != ''">
+                and springContext like concat('%',#{springContext},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

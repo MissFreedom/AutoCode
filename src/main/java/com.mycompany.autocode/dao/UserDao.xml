@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.UserDao">
+    <insert id="insertUser" parameterType="com.mycompany.autocode.model.UserDO">
+        insert into user(
+        id,
+        userNane,
+        createDate,
+        modifyDate,
+        isdeleted
+        )values(
+        #{id},
+        #{userNane},
+        sysdate(),
+        sysdate(),
+        0
+        )
+    </insert>
+
+    <update id="updateUser" parameterType="com.mycompany.autocode.model.UserDO">
+        update user
+        <set>
+            <if test = "userNane != null and userNane != ''">
+                userNane = #{userName},
+            </if>
+            <if test = "userContext != null and userContext !=''">
+                userContext = #{userContext},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            id = #{id} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deleteUser" parameterType="String">
+        update user set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+    </update>
+
+    <select id="selectUserById" parameterType="String">
+        select * from user where id = #{id} and isdeleted = 0
+    </select>
+
+    <select id="selectUserByUserName" parameterType="com.mycompany.autocode.model.UserDO" resultType="com.mycompany.autocode.model.UserDO">
+        select * from user
+        <where>
+            isdeleted = 0
+            <if test="userName != null and userName != ''">
+                and userName like concat('% ',#{userName},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

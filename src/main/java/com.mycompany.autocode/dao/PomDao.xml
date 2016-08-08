@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.PomDao">
+    <insert id="insertPom" parameterType="com.mycompany.autocode.model.PomDO">
+        insert into pom(
+        id,
+        userId,
+        pomNane,
+        pomContext,
+        createDate,
+        modifyDate,
+        isdeleted
+        )values(
+        #{id},
+        #{userId},
+        #{pomNane},
+        #{pomContext},
+        sysdate(),
+        sysdate(),
+        0
+        )
+    </insert>
+
+    <update id="updatePom" parameterType="com.mycompany.autocode.model.PomDO">
+        update pom
+        <set>
+            <if test = "pomNane != null and pomNane != ''">
+                pomNane = #{pomName},
+            </if>
+            <if test = "pomContext != null and pomContext !=''">
+                pomContext = #{pomContext},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            id = #{id} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deletePom" parameterType="String">
+        update pom set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+    </update>
+
+    <select id="selectPomById" parameterType="String">
+        select * from pom where id = #{id} and isdeleted = 0
+    </select>
+
+    <select id="selectPom" parameterType="com.mycompany.autocode.model.PomDO" resultType="com.mycompany.autocode.model.PomDO">
+        select * from pom
+        <where>
+            isdeleted = 0
+            <if test="userId != null and userId !=''">
+                and userId = #{userId}
+            </if>
+            <if test="pomName != null and pomName != ''">
+                and pomName like concat('% ',#{pomName},'%')
+            </if>
+            <if test="pomContext != null and pomContext != ''">
+                and pomContext like concat('%',#{pomContext},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

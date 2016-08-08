@@ -32,8 +32,8 @@ public interface WebDao {
     WebDO selectWebById(String id);
 
     /**
-     * 通过用户Id获取用户所有web文件
+     * 通过条件获取web文件
      */
-    List<WebDO> selectWebByUserId(String userId);
+    List<WebDO> selectWeb(WebDO query);
 
 }

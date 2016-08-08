@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.JavaDao">
+    <insert id="insertJava" parameterType="com.mycompany.autocode.model.JavaDO">
+        insert into java(
+        id,
+        userId,
+        className,
+        classContext,
+        createDate,
+        modifyDate,
+        isdeleted
+        )values(
+        #{id},
+        #{userId},
+        #{className},
+        #{classContext},
+        sysdate(),
+        sysdate(),
+        0
+        )
+    </insert>
+
+    <update id="updateJava" parameterType="com.mycompany.autocode.model.JavaDO">
+        update java
+        <set>
+            <if test = "className != null and className != ''">
+                className = #{className},
+            </if>
+            <if test = "classContext != null and classContext !=''">
+                classContext = #{classContext},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            id = #{id} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deleteJava" parameterType="String">
+        update java set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+    </update>
+
+    <select id="selectJavaById" parameterType="String">
+        select * from java where id = #{id} and isdeleted = 0
+    </select>
+
+    <select id="selectJava" parameterType="com.mycompany.autocode.model.JavaDO" resultType="com.mycompany.autocode.model.JavaDO">
+        select * from java
+        <where>
+            isdeleted = 0
+            <if test="userId != null and userId !=''">
+                and userId = #{userId}
+            </if>
+            <if test="className != null and className != ''">
+                and className like concat('% ',#{className},'%')
+            </if>
+            <if test="classContext != null and classContext != ''">
+                and classContext like concat('%',#{classContext},'%')
+            </if>
+        </where>
+    </select>
+</mapper>
