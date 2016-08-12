@@ -37,4 +37,3 @@ public interface JavaDao {
     List<JavaDO> selectJava(JavaDO query);
 }
 
-}

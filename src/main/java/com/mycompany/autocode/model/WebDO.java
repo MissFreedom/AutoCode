@@ -7,6 +7,8 @@ package com.mycompany.autocode.model;
  */
 public class WebDO extends BaseDO {
 
+    private static final long serialVersionUID = 949188362027972834L;
+
     /** webId*/
     private String id;
 

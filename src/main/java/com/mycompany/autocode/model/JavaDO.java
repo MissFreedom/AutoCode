@@ -7,6 +7,8 @@ package com.mycompany.autocode.model;
  */
 public class JavaDO extends BaseDO {
 
+    private static final long serialVersionUID = 5244747012686932491L;
+
     /** javaId*/
     private String id;
 

@@ -7,6 +7,8 @@ package com.mycompany.autocode.model;
  */
 public class DataBaseDO extends BaseDO {
 
+    private static final long serialVersionUID = -7451941205563111589L;
+
     /** 数据库配置Id*/
     private String id;
 

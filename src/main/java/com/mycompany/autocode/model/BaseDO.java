@@ -10,6 +10,8 @@ import java.util.Date;
  */
 public class BaseDO implements Serializable{
 
+    private static final long serialVersionUID = -4787378980220132431L;
+
     /** 创建时间 */
     private Date createDate;
 

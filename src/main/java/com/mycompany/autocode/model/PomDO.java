@@ -7,6 +7,8 @@ package com.mycompany.autocode.model;
  */
 public class PomDO extends BaseDO {
 
+    private static final long serialVersionUID = 7102222796987467077L;
+
     /** pomId */
     private String id;
 

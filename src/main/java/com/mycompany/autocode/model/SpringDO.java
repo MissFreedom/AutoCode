@@ -7,6 +7,8 @@ package com.mycompany.autocode.model;
  */
 public class SpringDO extends BaseDO {
 
+    private static final long serialVersionUID = -3886555495724809019L;
+
     /** springId */
     private String id;
 
