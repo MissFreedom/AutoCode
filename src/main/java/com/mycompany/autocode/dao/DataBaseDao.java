@@ -29,7 +29,7 @@ public interface DataBaseDao {
     /**
      * 通过数据库配置Id查询数据库配置
      */
-    DataBaseDO selectDataBaseById(String id);
+    DataBaseDO getDataBaseById(String id);
 
     /**
      * 通过条件查询数据库配置
