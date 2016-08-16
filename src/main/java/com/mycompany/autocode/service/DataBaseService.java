@@ -45,10 +45,10 @@ public interface DataBaseService {
 
     /**
      * 通过查询条件获取数据库配置文件列表
-     * @param dataBaseDO
+     * @param query
      * @return
      * @throws Exception
      */
-    List<DataBaseDO> queryDataBase(DataBaseDO dataBaseDO)throws Exception;
+    List<DataBaseDO> queryDataBase(DataBaseDO query)throws Exception;
 
 }

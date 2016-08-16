@@ -87,6 +87,12 @@ public class DataBaseServiceImpl implements DataBaseService{
     public boolean removeDataBase(String id) throws Exception {
         try {
             Assert.notNull(id,"数据库配置文件编号不能为空");
+            DataBaseDO entity = dataBaseDao.getDataBaseById(id);
+            Assert.notNull(entity,"数据库配置文件不存在或已删除");
+            boolean result = dataBaseDao.deleteDataBase(id) > 0;
+            Assert.isTrue(result,"删除数据库配置文件失败");
+
+            return result;
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             throw e;
@@ -100,16 +106,24 @@ public class DataBaseServiceImpl implements DataBaseService{
      * @throws Exception
      */
     public DataBaseDO getDataBaseById(String id) throws Exception {
+        Assert.notNull(id,"数据库配置文件编号不能为空");
+        DataBaseDO entity = dataBaseDao.getDataBaseById(id);
+        if (entity != null){
+            return entity;
+        }
         return null;
     }
 
     /**
      * 通过查询条件获取数据库配置文件列表
-     * @param dataBaseDO
+     * @param query
      * @return
      * @throws Exception
      */
-    public List<DataBaseDO> queryDataBase(DataBaseDO dataBaseDO) throws Exception {
+    public List<DataBaseDO> queryDataBase(DataBaseDO query) throws Exception {
+        if (query == null){
+            return null;
+        }
         return null;
     }
 }
