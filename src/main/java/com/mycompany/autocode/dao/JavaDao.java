@@ -29,7 +29,7 @@ public interface JavaDao {
     /**
      * 通过javaId获取java文件
      */
-    JavaDO selectJavaById(String id);
+    JavaDO getJavaById(String id);
 
     /**
      * 通过条件获取java文件

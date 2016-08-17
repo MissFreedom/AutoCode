@@ -8,10 +8,11 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
-import java.util.UUID;
 
 /**
  * author: JinBingBing
@@ -122,8 +123,13 @@ public class DataBaseServiceImpl implements DataBaseService{
      */
     public List<DataBaseDO> queryDataBase(DataBaseDO query) throws Exception {
         if (query == null){
-            return null;
+            return Collections.EMPTY_LIST;
         }
-        return null;
+        List<DataBaseDO> dataList = dataBaseDao.selectDataBase(query);
+        if (CollectionUtils.isEmpty(dataList)){
+            return Collections.EMPTY_LIST;
+        }
+        return dataList;
     }
+
 }

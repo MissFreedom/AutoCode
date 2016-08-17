@@ -41,7 +41,7 @@
         update java set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
     </update>
 
-    <select id="selectJavaById" parameterType="String">
+    <select id="getJavaById" parameterType="String">
         select * from java where id = #{id} and isdeleted = 0
     </select>
 
