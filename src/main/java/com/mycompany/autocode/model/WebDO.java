@@ -10,7 +10,7 @@ public class WebDO extends BaseDO {
     private static final long serialVersionUID = 949188362027972834L;
 
     /** webId*/
-    private String id;
+    private String webId;
 
     /** 用户Id*/
     private String userId;
@@ -21,12 +21,12 @@ public class WebDO extends BaseDO {
     /** web文件内容*/
     private String webContext;
 
-    public String getId() {
-        return id;
+    public String getWebId() {
+        return webId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setWebId(String webId) {
+        this.webId = webId;
     }
 
     public String getUserId() {

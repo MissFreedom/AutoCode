@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.autocode.dao.SpringDao">
     <insert id="insertSpring" parameterType="com.mycompany.autocode.model.SpringDO">
         insert into spring(
-        id,
+        springId,
         userId,
         springNane,
         springContext,
@@ -11,7 +11,7 @@
         modifyDate,
         isdeleted
         )values(
-        #{id},
+        #{springId},
         #{userId},
         #{springNane},
         #{springContext},
@@ -33,16 +33,16 @@
             modifyDate = sysdate()
         </set>
         <where>
-            id = #{id} and isdeleted = 0
+            springId = #{springId} and isdeleted = 0
         </where>
     </update>
 
     <update id="deleteSpring" parameterType="String">
-        update spring set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+        update spring set isdeleted = 1 ,modifyDate = sysdate() where springId = #{springId} and isdeleted = 0
     </update>
 
     <select id="selectSpringById" parameterType="String">
-        select * from spring where id = #{id} and isdeleted = 0
+        select * from spring where springId = #{springId} and isdeleted = 0
     </select>
 
     <select id="selectSpring" parameterType="com.mycompany.autocode.model.SpringDO" resultType="com.mycompany.autocode.model.SpringDO">

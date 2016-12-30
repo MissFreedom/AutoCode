@@ -45,7 +45,7 @@ public class DataBaseServiceImpl implements DataBaseService{
             Assert.notNull(dataBaseDO.getMaxIdle(), "最大空间不能为空");
             Assert.notNull(dataBaseDO.getMaxWait(), "最长等待时间不能为空");
             Assert.notNull(dataBaseDO.getMinIdle(), "最小空间不能为空");
-            dataBaseDO.setId(UUIDUtils.getUUID());
+            dataBaseDO.setDataBaseId(UUIDUtils.getUUID());
             boolean result = dataBaseDao.insertDataBase(dataBaseDO) > 0;
             Assert.isTrue(result, "添加数据配置文件失败");
 
@@ -66,8 +66,8 @@ public class DataBaseServiceImpl implements DataBaseService{
     public boolean modifyDataBase(DataBaseDO dataBaseDO) throws Exception {
         try{
             Assert.notNull(dataBaseDO,"数据库配置文件不能为空");
-            Assert.notNull(dataBaseDO.getId(),"数据库配置文件编号不能为空");
-            DataBaseDO entity = dataBaseDao.getDataBaseById(dataBaseDO.getId());
+            Assert.notNull(dataBaseDO.getDataBaseId(),"数据库配置文件编号不能为空");
+            DataBaseDO entity = dataBaseDao.getDataBaseById(dataBaseDO.getDataBaseId());
             Assert.notNull(entity,"该数据库配置文件不存在或已删除");
             boolean result = dataBaseDao.updateDataBase(dataBaseDO) > 0;
             Assert.isTrue(result,"修改数据库配置文件失败");

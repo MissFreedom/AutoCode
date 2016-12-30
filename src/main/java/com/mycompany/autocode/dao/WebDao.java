@@ -19,7 +19,7 @@ public interface WebDao {
     /**
      * 删除web文件
      */
-    int deleteWeb(String id);
+    int deleteWeb(String webId);
 
     /**
      * 修改web文件
@@ -29,7 +29,7 @@ public interface WebDao {
     /**
      * 通过webId获取web文件
      */
-    WebDO selectWebById(String id);
+    WebDO selectWebById(String webId);
 
     /**
      * 通过条件获取web文件

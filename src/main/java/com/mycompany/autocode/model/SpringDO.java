@@ -10,7 +10,7 @@ public class SpringDO extends BaseDO {
     private static final long serialVersionUID = -3886555495724809019L;
 
     /** springId */
-    private String id;
+    private String springId;
 
     /** 用户Id */
     private String userId;
@@ -21,12 +21,12 @@ public class SpringDO extends BaseDO {
     /** spring文件内容 */
     private String springContext;
 
-    public String getId() {
-        return id;
+    public String getSpringId() {
+        return springId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setSpringId(String springId) {
+        this.springId = springId;
     }
 
     public String getUserId() {

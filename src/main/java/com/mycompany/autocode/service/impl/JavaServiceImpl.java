@@ -11,7 +11,6 @@ import org.springframework.util.Assert;
 
 import javax.annotation.Resource;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * author: JinBingBing
@@ -31,7 +30,7 @@ public class JavaServiceImpl implements JavaService {
             Assert.notNull(javaDO, "java文件不能为空");
             Assert.notNull(javaDO.getClassName(), "java文件名不能为空");
             Assert.notNull(javaDO.getClassContext(), "java文件内容不能为空");
-            javaDO.setId(UUIDUtils.getUUID());
+            javaDO.setJavaId(UUIDUtils.getUUID());
             boolean result = javaDao.insertJava(javaDO) > 0;
             Assert.isTrue(result, "添java文件失败");
 
@@ -45,22 +44,26 @@ public class JavaServiceImpl implements JavaService {
     public boolean modifyJava(JavaDO javaDO) throws Exception {
         try{
             Assert.notNull(javaDO,"java文件不能为空");
-            Assert.notNull(javaDO.getId(),"java文件ID");
-            JavaDO entity = javaDao.getJavaById(javaDO.getId());
+            Assert.notNull(javaDO.getJavaId(),"java文件ID");
+            JavaDO entity = javaDao.getJavaById(javaDO.getJavaId());
             Assert.notNull(entity,"java文件不存在或已删除");
             boolean result = javaDao.updateJava(javaDO) > 0;
             Assert.isTrue(result,"修改java文件失败");
-
-            rException e){
+            return result;
+        }catch (Exception e){
                 logger.error(e.getMessage(),e);
                 throw e;
-            }
         }
-        eturn result;
-        }catch (
+    }
+
     public boolean removeJava(String id) throws Exception {
         try{
             Assert.notNull(id,"java文件ID不能为空");
+            JavaDO entity = javaDao.getJavaById(id);
+            Assert.notNull(entity,"java文件不存在或已删除");
+            boolean result = javaDao.deleteJava(id)>0;
+            Assert.isTrue(result,"删除java文件失败");
+            return result;
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             throw e;

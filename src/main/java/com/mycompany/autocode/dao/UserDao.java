@@ -19,7 +19,7 @@ public interface UserDao {
     /**
      * 删除用户
      */
-    int deleteUser(String id);
+    int deleteUser(String userId);
 
     /**
      * 修改用户
@@ -29,7 +29,7 @@ public interface UserDao {
     /**
      * 通过用户Id查询用户信息
      */
-    UserDO selectUserById(String id);
+    UserDO selectUserById(String userId);
 
     /**
      * 查询用户信息

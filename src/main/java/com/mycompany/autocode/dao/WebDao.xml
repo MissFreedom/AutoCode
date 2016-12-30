@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.autocode.dao.WebDao">
     <insert id="insertWeb" parameterType="com.mycompany.autocode.model.WebDO">
         insert into web(
-        id,
+        webId,
         userId,
         webNane,
         webContext,
@@ -11,7 +11,7 @@
         modifyDate,
         isdeleted
         )values(
-        #{id},
+        #{webId},
         #{userId},
         #{webNane},
         #{webContext},
@@ -33,16 +33,16 @@
             modifyDate = sysdate()
         </set>
         <where>
-            id = #{id} and isdeleted = 0
+            webId = #{webId} and isdeleted = 0
         </where>
     </update>
 
     <update id="deleteWeb" parameterType="String">
-        update web set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+        update web set isdeleted = 1 ,modifyDate = sysdate() where webId = #{webId} and isdeleted = 0
     </update>
 
     <select id="selectWebById" parameterType="String">
-        select * from web where id = #{id} and isdeleted = 0
+        select * from web where webId = #{webId} and isdeleted = 0
     </select>
 
     <select id="selectWeb" parameterType="com.mycompany.autocode.model.WebDO" resultType="com.mycompany.autocode.model.WebDO">

@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.autocode.dao.PomDao">
     <insert id="insertPom" parameterType="com.mycompany.autocode.model.PomDO">
         insert into pom(
-        id,
+        pomId,
         userId,
         pomNane,
         pomContext,
@@ -11,7 +11,7 @@
         modifyDate,
         isdeleted
         )values(
-        #{id},
+        #{pomId},
         #{userId},
         #{pomNane},
         #{pomContext},
@@ -33,16 +33,16 @@
             modifyDate = sysdate()
         </set>
         <where>
-            id = #{id} and isdeleted = 0
+            pomId = #{pomId} and isdeleted = 0
         </where>
     </update>
 
     <update id="deletePom" parameterType="String">
-        update pom set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+        update pom set isdeleted = 1 ,modifyDate = sysdate() where pomId = #{pomId} and isdeleted = 0
     </update>
 
     <select id="selectPomById" parameterType="String">
-        select * from pom where id = #{id} and isdeleted = 0
+        select * from pom where pomId = #{pomId} and isdeleted = 0
     </select>
 
     <select id="selectPom" parameterType="com.mycompany.autocode.model.PomDO" resultType="com.mycompany.autocode.model.PomDO">

@@ -18,7 +18,7 @@ public interface SpringDao {
     /**
      * 删除spring文件
      */
-    int deleteWeb(String id);
+    int deleteWeb(String springId);
 
     /**
      * 修改spring文件
@@ -28,7 +28,7 @@ public interface SpringDao {
     /**
      * 通过springId获取spring文件
      */
-    SpringDO selectpringById(String id);
+    SpringDO selectpringById(String springId);
 
     /**
      * 通过条件获取spring文件

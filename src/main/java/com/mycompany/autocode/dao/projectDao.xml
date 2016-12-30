@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mycompany.autocode.dao.ProjectDao">
+    <insert id="insertProject" parameterType="com.mycompany.autocode.model.ProjectDO">
+        insert into project(
+        projectId,
+        dataBaseId,
+        javaId,
+        pomId,
+        springId,
+        userId,
+        webId,
+        createDate,
+        modifyDate,
+        isdeleted
+        )values(
+        #{projectId},
+        #{dataBaseId},
+        #{javaId},
+        #{pomId},
+        #{springId},
+        #{userId},
+        #{webId},
+        sysdate(),
+        sysdate(),
+        0
+        )
+    </insert>
+
+    <update id="updateProject" parameterType="com.mycompany.autocode.model.ProjectDO">
+        update project
+        <set>
+            <if test = "dataBaseId != null and dataBaseId != ''">
+                dataBaseId = #{dataBaseId},
+            </if>
+            <if test = "javaId != null and javaId !=''">
+                javaId = #{javaId},
+            </if>
+            <if test = "pomId != null and pomId != ''">
+                pomId = #{pomId},
+            </if>
+            <if test = "springId != null and springId !=''">
+                springId = #{springId},
+            </if>
+            <if test = "userId != null and userId != ''">
+                userId = #{userId},
+            </if>
+            <if test = "webId != null and webId !=''">
+                webId = #{webId},
+            </if>
+            modifyDate = sysdate()
+        </set>
+        <where>
+            projectId = #{projectId} and isdeleted = 0
+        </where>
+    </update>
+
+    <update id="deleteProject" parameterType="String">
+        update project set isdeleted = 1 ,modifyDate = sysdate() where projectId = #{projectId} and isdeleted = 0
+    </update>
+
+    <select id="selectProjectById" parameterType="String">
+        select * from project where projectId = #{projectId} and isdeleted = 0
+    </select>
+
+    <select id="selectProject" parameterType="com.mycompany.autocode.model.ProjectDO" resultType="com.mycompany.autocode.model.ProjectDO">
+        select * from project
+        <where>
+            isdeleted = 0
+            <if test="userId != null and userId !=''">
+                and userId = #{userId}
+            </if>
+            <if test="projectName != null and projectName != ''">
+                and projectName like concat('% ',#{projectName},'%')
+            </if>
+            <if test="projectContext != null and projectContext != ''">
+                and projectContext like concat('%',#{projectContext},'%')
+            </if>
+        </where>
+    </select>
+</mapper>

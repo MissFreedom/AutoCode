@@ -19,7 +19,7 @@ public interface DataBaseDao {
     /**
      * 删除数据库配置
      */
-    int deleteDataBase(String id);
+    int deleteDataBase(String dataBaseId);
 
     /**
      * 修改数据库配置
@@ -29,7 +29,7 @@ public interface DataBaseDao {
     /**
      * 通过数据库配置Id查询数据库配置
      */
-    DataBaseDO getDataBaseById(String id);
+    DataBaseDO getDataBaseById(String dataBaseId);
 
     /**
      * 通过条件查询数据库配置

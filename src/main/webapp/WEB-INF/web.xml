@@ -42,7 +42,7 @@
   <!--Spring MVC servlet -->
   <servlet>
     <servlet-name>SpringMVC</servlet-name>
-    <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+    <servlet-class>com.mycompany.autocode.utils.MyServletDemo</servlet-class>
     <init-param>
       <param-name>contextConfigLocation</param-name>
       <param-value>classpath:spring-mvc.xml</param-value>

@@ -10,7 +10,7 @@ public class JavaDO extends BaseDO {
     private static final long serialVersionUID = 5244747012686932491L;
 
     /** javaId*/
-    private String id;
+    private String JavaId;
 
     /** 用户Id*/
     private String userId;
@@ -21,12 +21,12 @@ public class JavaDO extends BaseDO {
     /** java文件内容*/
     private String classContext;
 
-    public String getId() {
-        return id;
+    public String getJavaId() {
+        return JavaId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setJavaId(String javaId) {
+        JavaId = javaId;
     }
 
     public String getUserId() {

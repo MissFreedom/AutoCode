@@ -10,7 +10,7 @@ public class UserDO extends BaseDO {
     private static final long serialVersionUID = 2160252984201550990L;
 
     /** 用户Id*/
-    private String id;
+    private String userId;
 
     /** 用户名*/
     private String userName;
@@ -18,12 +18,12 @@ public class UserDO extends BaseDO {
     /** 密码*/
     private String password;
 
-    public String getId() {
-        return id;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
     public String getUserName() {

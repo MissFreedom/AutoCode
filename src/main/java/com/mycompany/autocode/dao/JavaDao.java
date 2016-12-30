@@ -19,7 +19,7 @@ public interface JavaDao {
     /**
      * 删除java文件
      */
-    int deleteJava(String id);
+    int deleteJava(String javaId);
 
     /**
      * 修改Java文件
@@ -29,7 +29,7 @@ public interface JavaDao {
     /**
      * 通过javaId获取java文件
      */
-    JavaDO getJavaById(String id);
+    JavaDO getJavaById(String javaId);
 
     /**
      * 通过条件获取java文件

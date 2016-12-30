@@ -3,7 +3,7 @@
 <mapper namespace="com.mycompany.autocode.dao.JavaDao">
     <insert id="insertJava" parameterType="com.mycompany.autocode.model.JavaDO">
         insert into java(
-        id,
+        javaId,
         userId,
         className,
         classContext,
@@ -11,7 +11,7 @@
         modifyDate,
         isdeleted
         )values(
-        #{id},
+        #{javaId},
         #{userId},
         #{className},
         #{classContext},
@@ -33,16 +33,16 @@
             modifyDate = sysdate()
         </set>
         <where>
-            id = #{id} and isdeleted = 0
+            javaId = #{javaId} and isdeleted = 0
         </where>
     </update>
 
     <update id="deleteJava" parameterType="String">
-        update java set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+        update java set isdeleted = 1 ,modifyDate = sysdate() where javaId = #{javaId} and isdeleted = 0
     </update>
 
     <select id="getJavaById" parameterType="String">
-        select * from java where id = #{id} and isdeleted = 0
+        select * from java where javaId = #{javaId} and isdeleted = 0
     </select>
 
     <select id="selectJava" parameterType="com.mycompany.autocode.model.JavaDO" resultType="com.mycompany.autocode.model.JavaDO">

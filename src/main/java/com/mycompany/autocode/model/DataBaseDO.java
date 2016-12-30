@@ -10,7 +10,7 @@ public class DataBaseDO extends BaseDO {
     private static final long serialVersionUID = -7451941205563111589L;
 
     /** 数据库配置Id*/
-    private String id;
+    private String dataBaseId;
 
     /** 用户Id*/
     private String userId;
@@ -45,12 +45,12 @@ public class DataBaseDO extends BaseDO {
     /** 最长等待时间*/
     private String maxWait;
 
-    public String getId() {
-        return id;
+    public String getDataBaseId() {
+        return dataBaseId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setDataBaseId(String dataBaseId) {
+        this.dataBaseId = dataBaseId;
     }
 
     public String getUserId() {

@@ -18,7 +18,7 @@ public interface PomDao {
     /**
      * 删除pom文件
      */
-    int deletePom(String id);
+    int deletePom(String pomId);
 
     /**
      * 修改pom文件
@@ -28,7 +28,7 @@ public interface PomDao {
     /**
      * 通过pomId获取pom文件
      */
-    PomDO selectPomById(String id);
+    PomDO selectPomById(String pomId);
 
     /**
      * 通过条件获取Pom文件

@@ -3,13 +3,13 @@
 <mapper namespace="com.mycompany.autocode.dao.UserDao">
     <insert id="insertUser" parameterType="com.mycompany.autocode.model.UserDO">
         insert into user(
-        id,
+        userId,
         userNane,
         createDate,
         modifyDate,
         isdeleted
         )values(
-        #{id},
+        #{userId},
         #{userNane},
         sysdate(),
         sysdate(),
@@ -29,16 +29,16 @@
             modifyDate = sysdate()
         </set>
         <where>
-            id = #{id} and isdeleted = 0
+            userId = #{userId} and isdeleted = 0
         </where>
     </update>
 
     <update id="deleteUser" parameterType="String">
-        update user set isdeleted = 1 ,modifyDate = sysdate() where id = #{id} and isdeleted = 0
+        update user set isdeleted = 1 ,modifyDate = sysdate() where userId = #{userId} and isdeleted = 0
     </update>
 
     <select id="selectUserById" parameterType="String">
-        select * from user where id = #{id} and isdeleted = 0
+        select * from user where userId = #{userId} and isdeleted = 0
     </select>
 
     <select id="selectUserByUserName" parameterType="com.mycompany.autocode.model.UserDO" resultType="com.mycompany.autocode.model.UserDO">
