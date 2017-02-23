@@ -15,25 +15,25 @@ public interface ProjectDao {
     /**
      * 插入项目配置
      */
-    int insertProjectDao(ProjectDO projectDO);
+    int insertProject(ProjectDO projectDO);
 
     /**
      * 更新项目配置
      */
-    int updateProjectDao(ProjectDO projectDO);
+    int updateProject(ProjectDO projectDO);
 
     /**
      * 删除项目配置
      */
-    int deleteProjectDao(String projectId);
+    int deleteProject(String projectId);
 
     /**
      * 查询项目配置信息
      */
-    ProjectDO getProjectDaoById(String projectId);
+    ProjectDO selectProjectById(String projectId);
 
     /**
      * 分页查询项目配置信息
      */
-    List<ProjectDO> selectProjectDao(ProjectDO query);
+    List<ProjectDO> selectProject(ProjectDO query);
 }

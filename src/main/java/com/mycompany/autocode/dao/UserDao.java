@@ -34,5 +34,5 @@ public interface UserDao {
     /**
      * 查询用户信息
      */
-    UserDO selectUserByUserName(String userName);
+    List<UserDO> selectUserByUserName(String userName);
 }

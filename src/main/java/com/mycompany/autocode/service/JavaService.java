@@ -45,10 +45,10 @@ public interface JavaService {
 
     /**
      * 通过查询条件获取Java文件列表
-     * @param javaDO
+     * @param query
      * @return
      * @throws Exception
      */
-    List<JavaDO> queryJava(JavaDO javaDO)throws Exception;
+    List<JavaDO> queryJava(JavaDO query)throws Exception;
 
 }

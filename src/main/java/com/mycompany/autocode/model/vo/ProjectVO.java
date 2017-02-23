@@ -1,13 +1,15 @@
-package com.mycompany.autocode.model;
+package com.mycompany.autocode.model.vo;
+
+import java.io.Serializable;
 
 /**
  * author: JinBingBing
- * description: 项目配置
- * time: 2016/10/28 17:38.
+ * description:
+ * time: 2017/2/17 14:07.
  */
-public class ProjectDO extends BaseDO {
+public class ProjectVO implements Serializable {
 
-    private static final long serialVersionUID = 6214578863814573407L;
+    private static final long serialVersionUID = 489132990805830667L;
 
     /** 项目Id */
     private String projectId;
@@ -30,7 +32,7 @@ public class ProjectDO extends BaseDO {
     /** 用户Id */
     private String userId;
 
-    /** webId */ 
+    /** webId */
     private String webId;
 
     public String getProjectId() {
@@ -97,4 +99,3 @@ public class ProjectDO extends BaseDO {
         this.webId = webId;
     }
 }
-

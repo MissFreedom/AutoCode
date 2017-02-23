@@ -13,17 +13,17 @@ public interface SpringDao {
     /**
      * 添加spring文件
      */
-    int insertWeb(SpringDO springDo);
+    int insertSpring(SpringDO springDo);
 
     /**
      * 删除spring文件
      */
-    int deleteWeb(String springId);
+    int deleteSpring(String springId);
 
     /**
      * 修改spring文件
      */
-    int updateWeb(SpringDO springDo);
+    int updateSpring(SpringDO springDo);
 
     /**
      * 通过springId获取spring文件

@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.util.Assert;
+import org.springframework.util.CollectionUtils;
 
 import javax.annotation.Resource;
+import java.util.Collections;
 import java.util.List;
 
 /**
@@ -32,11 +34,10 @@ public class JavaServiceImpl implements JavaService {
             Assert.notNull(javaDO.getClassContext(), "java文件内容不能为空");
             javaDO.setJavaId(UUIDUtils.getUUID());
             boolean result = javaDao.insertJava(javaDO) > 0;
-            Assert.isTrue(result, "添java文件失败");
 
             return result;
         }catch (Exception e){
-            logger.error(e.getMessage(),e);
+            logger.error(this.getClass().getName()+e.getMessage(),e);
             throw e;
         }
     }
@@ -51,7 +52,7 @@ public class JavaServiceImpl implements JavaService {
             Assert.isTrue(result,"修改java文件失败");
             return result;
         }catch (Exception e){
-                logger.error(e.getMessage(),e);
+                logger.error(this.getClass().getName()+e.getMessage(),e);
                 throw e;
         }
     }
@@ -65,16 +66,28 @@ public class JavaServiceImpl implements JavaService {
             Assert.isTrue(result,"删除java文件失败");
             return result;
         }catch (Exception e){
-            logger.error(e.getMessage(),e);
+            logger.error(this.getClass().getName()+e.getMessage(),e);
             throw e;
         }
     }
 
     public JavaDO getJavaById(String id) throws Exception {
+        Assert.notNull(id,"查询Id不能为空");
+        JavaDO entity = javaDao.getJavaById(id);
+        if (null != entity){
+            return entity;
+        }
         return null;
     }
 
-    public List<JavaDO> queryJava(JavaDO javaDO) throws Exception {
-        return null;
+    public List<JavaDO> queryJava(JavaDO query) throws Exception {
+        if (query == null){
+            return Collections.EMPTY_LIST;
+        }
+        List<JavaDO> dataList = javaDao.selectJava(query);
+        if (CollectionUtils.isEmpty(dataList)){
+            return Collections.EMPTY_LIST;
+        }
+        return dataList;
     }
 }

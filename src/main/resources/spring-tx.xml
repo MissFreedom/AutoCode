@@ -20,6 +20,9 @@
         <property name="dataSource" ref="dataSource" />
     </bean>
 
+    <!--登陆拦截-->
+    <bean id = 'loginInterceptor' class="com.mycompany.autocode.interceptor.LoginInterceptor" />
+
     <!-- 开启注解事务机制 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
 
@@ -43,4 +46,16 @@
             <tx:method name="exist*"  read-only="true" /> -->
         </tx:attributes>
     </tx:advice>
+
+    <!-- 定义事务作用范围 -->
+    <aop:config>
+        <aop:pointcut id="taskmanager-transaction" expression="execution (* com.mycompany.autocode.service.impl.*.*(..))" />
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="taskmanager-transaction" />
+    </aop:config>
+
+    <aop:config>
+        <aop:pointcut id="login-interceptor" expression="execution(* com.mycompany.autocode.interceptor.*.*(..))" />
+        <aop:advisor advice-ref="loginInterceptor" pointcut-ref="login-interceptor" />
+    </aop:config>
+
 </beans>

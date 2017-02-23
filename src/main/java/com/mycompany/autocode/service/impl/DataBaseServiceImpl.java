@@ -47,11 +47,10 @@ public class DataBaseServiceImpl implements DataBaseService{
             Assert.notNull(dataBaseDO.getMinIdle(), "最小空间不能为空");
             dataBaseDO.setDataBaseId(UUIDUtils.getUUID());
             boolean result = dataBaseDao.insertDataBase(dataBaseDO) > 0;
-            Assert.isTrue(result, "添加数据配置文件失败");
 
             return result;
         }catch (Exception e){
-            logger.error(e.getMessage(),e);
+            logger.error(this.getClass().getName()+e.getMessage(),e);
             throw e;
         }
 
@@ -70,11 +69,10 @@ public class DataBaseServiceImpl implements DataBaseService{
             DataBaseDO entity = dataBaseDao.getDataBaseById(dataBaseDO.getDataBaseId());
             Assert.notNull(entity,"该数据库配置文件不存在或已删除");
             boolean result = dataBaseDao.updateDataBase(dataBaseDO) > 0;
-            Assert.isTrue(result,"修改数据库配置文件失败");
 
             return result;
         }catch (Exception e){
-            logger.error(e.getMessage(),e);
+            logger.error(this.getClass().getName()+e.getMessage(),e);
             throw e;
         }
     }
@@ -91,11 +89,10 @@ public class DataBaseServiceImpl implements DataBaseService{
             DataBaseDO entity = dataBaseDao.getDataBaseById(id);
             Assert.notNull(entity,"数据库配置文件不存在或已删除");
             boolean result = dataBaseDao.deleteDataBase(id) > 0;
-            Assert.isTrue(result,"删除数据库配置文件失败");
 
             return result;
         }catch (Exception e){
-            logger.error(e.getMessage(),e);
+            logger.error(this.getClass().getName()+e.getMessage(),e);
             throw e;
         }
     }

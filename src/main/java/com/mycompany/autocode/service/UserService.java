@@ -2,6 +2,8 @@ package com.mycompany.autocode.service;
 
 import com.mycompany.autocode.model.UserDO;
 
+import java.util.List;
+
 /**
  * author: JinBingBing
  * description:
@@ -42,11 +44,11 @@ public interface UserService {
     UserDO getUserById(String id)throws Exception;
 
     /**
-     * 通过查询条件获取User文件列表
+     * 通过用户昵称查询用户
      * @param userName
      * @return
      * @throws Exception
      */
-    UserDO getUserByUserName(String userName)throws Exception;
+    List<UserDO> getUserByUserName(String userName)throws Exception;
 
 }

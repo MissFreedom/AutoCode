@@ -45,10 +45,10 @@ public interface PomService {
 
     /**
      * 通过查询条件获取Pom文件列表
-     * @param pomDO
+     * @param query
      * @return
      * @throws Exception
      */
-    List<PomDO> queryPom(PomDO pomDO)throws Exception;
+    List<PomDO> queryPom(PomDO query)throws Exception;
 
 }
