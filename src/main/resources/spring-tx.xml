@@ -21,7 +21,7 @@
     </bean>
 
     <!--登陆拦截-->
-    <bean id = 'loginInterceptor' class="com.mycompany.autocode.interceptor.LoginInterceptor" />
+    <!--<bean id = 'loginInterceptor' class="com.mycompany.autocode.interceptor.LoginInterceptor" />-->
 
     <!-- 开启注解事务机制 -->
     <tx:annotation-driven transaction-manager="transactionManager" />
@@ -53,9 +53,9 @@
         <aop:advisor advice-ref="txAdvice" pointcut-ref="taskmanager-transaction" />
     </aop:config>
 
-    <aop:config>
-        <aop:pointcut id="login-interceptor" expression="execution(* com.mycompany.autocode.interceptor.*.*(..))" />
-        <aop:advisor advice-ref="loginInterceptor" pointcut-ref="login-interceptor" />
-    </aop:config>
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="login-interceptor" expression="execution(* com.mycompany.autocode.interceptor.*.*(..))" />-->
+        <!--<aop:advisor advice-ref="loginInterceptor" pointcut-ref="login-interceptor" />-->
+    <!--</aop:config>-->
 
 </beans>

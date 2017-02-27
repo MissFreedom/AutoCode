@@ -22,6 +22,7 @@ public class LoginInterceptor implements MethodInterceptor {
 
     public Object invoke(MethodInvocation methodInvocation) throws Throwable {
         try {
+
             return methodInvocation.proceed();
         }catch (Exception e){
             logger.error(e.getMessage(),e);

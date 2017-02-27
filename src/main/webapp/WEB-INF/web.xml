@@ -10,12 +10,14 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>
       classpath:spring-beans.xml,
-      classpath:spring-component.xml,
       classpath:spring-ds.xml,
       classpath:spring-tx.xml
     </param-value>
   </context-param>
-
+  <!-- Spring监听器 -->
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   <!-- 编码过滤器 -->
   <filter>
     <filter-name>encodingFilter</filter-name>
@@ -30,10 +32,6 @@
     <filter-name>encodingFilter</filter-name>
     <url-pattern>/*</url-pattern>
   </filter-mapping>
-  <!-- Spring监听器 -->
-  <!--<listener>-->
-    <!--<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>-->
-  <!--</listener>-->
   <!-- 防止Spring内存溢出监听器 -->
   <listener>
     <listener-class>org.springframework.web.util.IntrospectorCleanupListener</listener-class>
