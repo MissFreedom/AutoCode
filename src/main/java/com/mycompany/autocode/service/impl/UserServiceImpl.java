@@ -41,6 +41,26 @@ public class UserServiceImpl implements UserService {
         }
     }
 
+    /**
+     * 验证用户
+     * @param userDO
+     * @return
+     * @throws Exception
+     */
+    public boolean checkUser(UserDO userDO)throws Exception{
+        try{
+            Assert.notNull(userDO,"用户登录信息为空");
+            Assert.notNull(userDO.getUserName(),"用户名不能为空");
+            Assert.notNull(userDO.getPassword(),"用户密码不能为空");
+            boolean result = userDao.checkUser(userDO) > 0;
+
+            return result;
+        }catch (Exception e){
+            logger.error(this.getClass().getName()+e.getMessage(),e);
+            throw e;
+        }
+    }
+
     public boolean modifyUser(UserDO userDO) throws Exception {
         try {
             Assert.notNull(userDO,"用户信息不能为空");
@@ -80,15 +100,13 @@ public class UserServiceImpl implements UserService {
         return entity;
     }
 
-    public List<UserDO> getUserByUserName(String userName) throws Exception {
-        if (null == userName){
-            return Collections.EMPTY_LIST;
-        }
-        List<UserDO> dataList = userDao.selectUserByUserName(userName);
-        if (CollectionUtils.isEmpty(dataList)){
-            return Collections.EMPTY_LIST;
+    public UserDO getUserByUserName(String userName) throws Exception {
+        Assert.notNull(userName,"用户名不能为空");
+        UserDO entity = userDao.selectUserByUserName(userName);
+        if (null == entity){
+            return null;
         }
 
-        return dataList;
+        return entity;
     }
 }

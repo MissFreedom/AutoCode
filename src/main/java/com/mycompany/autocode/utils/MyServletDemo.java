@@ -3,6 +3,7 @@ package com.mycompany.autocode.utils;
 import org.springframework.http.HttpRequest;
 
 import javax.imageio.ImageIO;
+import javax.mail.internet.InternetAddress;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;

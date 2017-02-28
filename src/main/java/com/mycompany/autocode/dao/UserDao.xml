@@ -5,17 +5,23 @@
         insert into user(
         userId,
         userNane,
+        password,
         createDate,
         modifyDate,
         isdeleted
         )values(
         #{userId},
         #{userNane},
+        #{password},
         sysdate(),
         sysdate(),
         0
         )
     </insert>
+
+    <select id="checkUser" parameterType="com.mycompany.autocode.model.UserDO">
+        select count(*) from user where userId = #{userId} and password = #{password} and isdeleted = 0
+    </select>
 
     <update id="updateUser" parameterType="com.mycompany.autocode.model.UserDO">
         update user
@@ -23,8 +29,8 @@
             <if test = "userNane != null and userNane != ''">
                 userNane = #{userName},
             </if>
-            <if test = "userContext != null and userContext !=''">
-                userContext = #{userContext},
+            <if test = "password != null and password !=''">
+                password = #{password},
             </if>
             modifyDate = sysdate()
         </set>
@@ -46,7 +52,7 @@
         <where>
             isdeleted = 0
             <if test="userName != null and userName != ''">
-                and userName like concat('% ',#{userName},'%')
+                and userName = #{userName}
             </if>
         </where>
     </select>

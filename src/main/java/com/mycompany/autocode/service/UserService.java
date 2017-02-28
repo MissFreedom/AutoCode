@@ -20,6 +20,14 @@ public interface UserService {
     boolean addUser(UserDO userDO)throws Exception;
 
     /**
+     * 验证用户
+     * @param userDO
+     * @return
+     * @throws Exception
+     */
+    boolean checkUser(UserDO userDO)throws Exception;
+
+    /**
      * 修改User文件
      * @param userDO
      * @return
@@ -49,6 +57,6 @@ public interface UserService {
      * @return
      * @throws Exception
      */
-    List<UserDO> getUserByUserName(String userName)throws Exception;
+    UserDO getUserByUserName(String userName)throws Exception;
 
 }

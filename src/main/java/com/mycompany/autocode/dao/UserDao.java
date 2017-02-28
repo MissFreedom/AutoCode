@@ -17,6 +17,11 @@ public interface UserDao {
     int insertUser(UserDO userDo);
 
     /**
+     * 验证用户
+     */
+    int checkUser(UserDO userDO);
+
+    /**
      * 删除用户
      */
     int deleteUser(String userId);
@@ -34,5 +39,5 @@ public interface UserDao {
     /**
      * 查询用户信息
      */
-    List<UserDO> selectUserByUserName(String userName);
+    UserDO selectUserByUserName(String userName);
 }

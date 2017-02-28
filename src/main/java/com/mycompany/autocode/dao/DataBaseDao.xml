@@ -76,8 +76,8 @@
         update database set isdeleted = 1 ,modifyDate = sysdate() where dataBaseId = #{dataBaseId} and isdeleted = 0
     </update>
 
-    <select id="selectDataBaseById" parameterType="String">
-        select * from database where dataBaseId = #{dataBaseId} and isdeleted = 0
+    <select id="selectDataBaseById" parameterType="com.mycompany.autocode.model.DataBaseDO" resultType="com.mycompany.autocode.model.DataBaseDO">
+        select * from database where dataBaseId = #{dataBaseId} isdeleted = 0
     </select>
 
     <select id="selectDataBase" parameterType="com.mycompany.autocode.model.DataBaseDO" resultType="com.mycompany.autocode.model.DataBaseDO">
