@@ -112,5 +112,6 @@
             and maxWait = #{maxWait}
             </if>
         </where>
+        Order by DESC
     </select>
 </mapper>

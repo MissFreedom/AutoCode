@@ -38,8 +38,6 @@ public class DataBaseServiceImpl implements DataBaseService{
             Assert.notNull(dataBaseDO, "数据库配置不能为空");
             Assert.notNull(dataBaseDO.getDataBaseName(), "数据库配置文件名");
             Assert.notNull(dataBaseDO.getDriver(), "数据库驱动不能为空");
-            Assert.notNull(dataBaseDO.getUrl(), "数据库Url不能为空");
-            Assert.notNull(dataBaseDO.getUserName(), "数据库用户名不能为空");
             Assert.notNull(dataBaseDO.getInitialSize(), "数据库初始链接数不能为空");
             Assert.notNull(dataBaseDO.getMaxActive(), "数据库最大连接数不能为空");
             Assert.notNull(dataBaseDO.getMaxIdle(), "最大空间不能为空");

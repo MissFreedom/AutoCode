@@ -74,6 +74,6 @@ public class LoginFilter implements Filter{
     }
 
     public void destroy() {
-
+        config = null;
     }
 }

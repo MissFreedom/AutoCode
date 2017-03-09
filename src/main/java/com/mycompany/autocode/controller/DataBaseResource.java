@@ -50,6 +50,11 @@ public class DataBaseResource {
     @ResponseBody
     public Response addDataBase(DataBaseDO dataBaseDO , @CookieValue("userName")String userName){
         try{
+            UserDO userDO = userService.getUserByUserName(userName);
+            if (null == userDO){
+                return ResponseResult.returnAbort("未登录或登录已失效");
+            }
+            dataBaseDO.setUserId(userDO.getUserId());
             boolean result = dataBaseService.addDataBase(dataBaseDO);
             if (result) {
                 return ResponseResult.returnSuccess();
@@ -64,8 +69,13 @@ public class DataBaseResource {
     @RequestMapping(value = "/modify",method = RequestMethod.PUT)
     @Logined
     @ResponseBody
-    public Response modifyDataBase(DataBaseDO dataBaseDO){
+    public Response modifyDataBase(DataBaseDO dataBaseDO,@CookieValue("userName")String userName){
         try{
+            UserDO userDO = userService.getUserByUserName(userName);
+            if (null == userDO){
+                return ResponseResult.returnAbort("未登录或登录已失效");
+            }
+
             boolean result = dataBaseService.modifyDataBase(dataBaseDO);
             if (result) {
                 return ResponseResult.returnSuccess();
@@ -79,8 +89,13 @@ public class DataBaseResource {
 
     @RequestMapping(value = "/remove",method = RequestMethod.DELETE)
     @Logined
-    public Response removeDataBase(String dataBaseId){
+    public Response removeDataBase(String dataBaseId,@CookieParam("userName")String userName){
         try{
+            UserDO userDO = userService.getUserByUserName(userName);
+            if (null == userDO){
+                return ResponseResult.returnAbort("未登录或登录已失效");
+            }
+
             boolean result = dataBaseService.removeDataBase(dataBaseId);
             if (result) {
                 return ResponseResult.returnSuccess();
@@ -139,10 +154,9 @@ public class DataBaseResource {
                 JSONObject jsonObject = new JSONObject();
                 jsonObject.put("dataBaseName",dataBaseDO.getDataBaseName());
                 jsonObject.put("driver",dataBaseDO.getDriver());
-                jsonObject.put("userName",dataBaseDO.getUserName());
-                jsonObject.put("password",dataBaseDO.getPassWord());
-                jsonObject.put("url",dataBaseDO.getUrl());
+                dataBaseArray.add(jsonObject);
             }
+            return ResponseResult.returnSuccess(dataBaseArray.toJSONString());
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             return ResponseResult.returnAbort(e.getMessage());
