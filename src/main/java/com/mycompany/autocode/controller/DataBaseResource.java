@@ -59,7 +59,7 @@ public class DataBaseResource {
             if (result) {
                 return ResponseResult.returnSuccess();
             }
-            return ResponseResult.returnAbort("添加数据库配置失败");
+            return ResponseResult.returnAbort("添加数据库配置失败111");
         }catch (Exception e){
             logger.error(e.getMessage(),e);
             return ResponseResult.returnAbort(e.getMessage());
